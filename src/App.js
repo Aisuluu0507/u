@@ -1,19 +1,30 @@
+
 import React, { useRef, useState } from 'react';
 
-const ImageGallery = () => {
+const Photo = () => {
   const imageRef = useRef(null);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
-  const toggleVisibility = () => {
-    setIsHidden(!isHidden);
+  const toggleImage = () => {
+    if (imageRef.current) {
+      setIsVisible(!isVisible);
+      imageRef.current.style.display = isVisible ? 'none' : 'block';
+    }
   };
 
   return (
     <div>
-      <img ref={imageRef} src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6549d388ead1b63926277753_6549d44c59a57368a4815699/scale_1200" alt="Downloaded Image" style={{ display: isHidden ? 'none' : 'block' }} />
-      <button onClick={toggleVisibility}>Скрыть</button>
+      <button className='button' onClick={toggleImage}>
+        {isVisible ? 'Скрыть изображение' : 'Показать изображение'}
+      </button>
+      <img
+        ref={imageRef}
+        src="https://masterpiecer-images.s3.yandex.net/8d29410a3c4511ee94523a06614cf266:upscaled"
+        alt="Placeholder"
+        style={{ display: isVisible ? 'block' : 'none' }}
+      />
     </div>
   );
 };
 
-export default ImageGallery;
+export default Photo;

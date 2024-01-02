@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import ImageGallery from './App';
+import './App.css';
+import Photo from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ImageGallery />
+    <Photo />
   </React.StrictMode>
 );
